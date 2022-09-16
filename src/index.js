@@ -1,25 +1,36 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import ReactDOM from 'react-dom';
+import { applyMiddleware, createStore, compose } from 'redux';
 import { Provider } from 'react-redux';
-import { Route, Router, Switch } from 'react-router';
+import './index.css';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <Provider>
-    <Router>
-      <React.Suspense fallback={<Loading />}>
-        <Switch>
-          <Route path="/" component={App}>
-            <Route
-              path="/"
-            />
-          </Route>
-        </Switch>
-      </React.Suspense>
-    </Router>
-  </Provider>
+import {
+  HashRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom';
+
+import App from './App';
+import DefaultLayout from './containers/defaultLayout';
+
+ReactDOM.render(
+
+  <Router>
+    <React.Suspense>
+      <Switch>
+        <Route path="/" component={App}>
+          <Route
+            path="/home"
+            component={() => (
+              <DefaultLayout />
+            )}
+          />
+          <Redirect from="/" to="/home" />
+        </Route>
+      </Switch>
+    </React.Suspense>
+  </Router>,
+  document.getElementById('root')
 );
-reportWebVitals();
+

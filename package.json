@@ -1,114 +1,73 @@
 {
-  "name": "bo-check",
-  "version": "0.1.4",
+  "name": "stock-trading",
+  "version": "1.7.9",
   "private": true,
-  "description": "DTND's Back office new",
-  "author": "DTND TECH CO., LTD",
   "homepage": ".",
   "dependencies": {
-    "bootstrap": "^5.1.3",
+    "bootstrap": "^4.5.0",
     "crypto-js": "^4.1.1",
     "echarts": "^5.2.2",
     "echarts-for-react": "^3.0.2",
+    "exceljs": "^4.3.0",
+    "file-saver": "^2.0.5",
+    "highcharts": "^9.3.2",
+    "highcharts-react-official": "^3.1.0",
+    "history": "^5.0.0",
+    "html2canvas": "^1.3.3",
     "i18next": "^19.9.2",
+    "immutable": "^4.1.0",
+    "jspdf": "^2.4.0",
     "moment": "^2.29.1",
-    "print-js": "^1.6.0",
     "prop-types": "^15.7.2",
-    "react": "^17.0.2",
+    "rc-slider": "^10.0.0",
+    "react": "^16.14.0",
     "react-autosuggest": "^10.1.0",
-    "react-bootstrap": "^1.6.3",
-    "react-confirm-alert": "^2.8.0",
-    "react-datepicker": "^4.2.1",
-    "react-datetime": "^3.1.1",
-    "react-device-detect": "^1.17.0",
-    "react-dom": "^17.0.2",
+    "react-beautiful-dnd": "^13.1.0",
+    "react-bootstrap": "^1.6.1",
+    "react-captcha-code": "^1.0.7",
+    "react-confirm-alert": "^2.7.0",
+    "react-datepicker": "^4.1.1",
+    "react-device-detect": "^2.1.2",
+    "react-dom": "^16.14.0",
     "react-i18next": "^9.0.10",
     "react-icons": "^4.3.1",
+    "react-lazyload": "^3.2.0",
     "react-modal": "^3.14.4",
+    "react-multi-select-component": "^4.3.0",
     "react-perfect-scrollbar": "^1.5.8",
-    "react-redux": "^7.2.6",
-    "react-router": "^5.2.1",
-    "react-router-dom": "^5.3.0",
+    "react-redux": "^7.2.4",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^5.0.0",
     "react-select": "^5.2.1",
-    "react-signature-canvas": "^1.0.3",
     "react-text-mask": "^5.4.3",
     "react-toastify": "^8.1.0",
+    "redux": "^4.1.2",
     "redux-form": "^8.3.8",
     "redux-saga": "^1.1.3",
     "reselect": "^4.1.5",
     "socket.io-client": "^2.3.0",
     "styled-components": "^5.3.5",
-    "swiper": "6.8.4",
     "text-mask-addons": "^3.8.0",
     "uuid": "^8.3.2",
     "websocket": "^1.0.34"
   },
-  "resolutions": {
-    "react-error-overlay": "6.0.9",
-    "styled-components": "^5"
-  },
   "devDependencies": {
-    "@babel/core": "7.15.5",
-    "@pmmmwh/react-refresh-webpack-plugin": "0.5.4",
-    "@svgr/webpack": "5.5.0",
-    "babel-eslint": "^10.1.0",
-    "babel-loader": "8.2.3",
-    "babel-plugin-named-asset-import": "^0.3.8",
-    "babel-preset-react-app": "^10.0.1",
-    "bfj": "^7.0.2",
-    "camelcase": "^6.2.0",
-    "case-sensitive-paths-webpack-plugin": "2.4.0",
-    "css-loader": "4.3.0",
-    "dotenv": "8.2.0",
-    "dotenv-expand": "5.1.0",
-    "eslint": "^7.11.0",
-    "eslint-config-react-app": "^6.0.0",
-    "eslint-plugin-flowtype": "^5.2.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jsx-a11y": "^6.6.0",
-    "eslint-plugin-react": "^7.30.1",
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "eslint-plugin-testing-library": "^3.9.2",
-    "eslint-webpack-plugin": "^2.5.2",
-    "file-loader": "6.2.0",
-    "fs-extra": "^9.0.1",
-    "html-webpack-plugin": "4.5.0",
-    "husky": "^7.0.2",
-    "identity-obj-proxy": "^3.0.0",
-    "lint-staged": "^11.1.2",
-    "mini-css-extract-plugin": "0.11.3",
-    "optimize-css-assets-webpack-plugin": "5.0.4",
-    "pnp-webpack-plugin": "1.6.4",
-    "postcss-flexbugs-fixes": "4.2.1",
-    "postcss-loader": "3.0.0",
-    "postcss-normalize": "8.0.1",
-    "postcss-preset-env": "6.7.0",
-    "postcss-safe-parser": "5.0.2",
-    "prettier": "^2.2.1",
-    "react-app-polyfill": "^2.0.0",
-    "react-dev-utils": "^11.0.4",
-    "react-refresh": "^0.11.0",
-    "resolve": "1.21.0",
-    "resolve-url-loader": "^3.1.2",
-    "sass-loader": "^10.0.5",
-    "semver": "7.3.5",
-    "style-loader": "1.3.0",
-    "ts-pnp": "^1.2.0",
-    "url-loader": "4.1.1",
-    "web-vitals": "^1.1.1",
-    "webpack": "4.44.2",
-    "webpack-dev-server": "3.11.1",
-    "webpack-manifest-plugin": "2.2.0",
-    "workbox-webpack-plugin": "5.1.4"
+    "husky": "^7.0.4",
+    "lint-staged": "^12.1.3",
+    "prettier": "^2.5.1"
   },
   "scripts": {
-    "start": "node scripts/start.js",
-    "build": "node scripts/build.js"
+    "start": "react-scripts start",
+    "build": "set \"GENERATE_SOURCEMAP=false\" && react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "resolutions": {
+    "styled-components": "^5"
   },
   "eslintConfig": {
-    "extends": [
-      "react-app"
-    ]
+    "extends": "react-app"
   },
   "browserslist": {
     "production": [
@@ -120,11 +79,6 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
-    ]
-  },
-  "babel": {
-    "presets": [
-      "react-app"
     ]
   },
   "husky": {
@@ -139,6 +93,8 @@
     ]
   },
   "prettier": {
+    "tabWidth": 2,
+    "semi": false,
     "singleQuote": true
   }
 }
