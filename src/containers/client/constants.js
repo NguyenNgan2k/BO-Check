@@ -1,0 +1,5 @@
+export const CATEGORY_SET = 'CATEGORY_SET';
+export const CATEGORY_UNSET = 'CATEGORY_UNSET';
+
+export const SETTING_SET = 'SETTING_SET';
+export const SETTING_UNSET = 'SETTING_UNSET';
