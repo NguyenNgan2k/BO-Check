@@ -16,7 +16,7 @@ import {
 
 
 const StyleChart = styled.div`
-    margin: 20px 30px 0 0;
+    margin-right: 30px;
     background: #12211E;
     width: 252px;
     height: 150px;
@@ -36,8 +36,8 @@ function IndexIndicator(props) {
 
     const { indexList } = props;
     return (
-        <PerfectScrollbar style={{ overflow: 'hidden' }}>
-            <div className="d-flex">
+        <>
+            <div className="d-flex mt-3 mb-3">
                 {
                     indexList &&
                     !!indexList.length &&
@@ -51,7 +51,7 @@ function IndexIndicator(props) {
                     })
                 }
             </div>
-        </PerfectScrollbar>
+        </>
     );
 };
 

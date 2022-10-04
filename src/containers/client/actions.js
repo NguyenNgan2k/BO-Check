@@ -1,6 +1,11 @@
 import {
     CATEGORY_SET,
-    SETTING_SET
+    SETTING_SET,
+
+    SYMBOL_ACTIVE_SET,
+    SYMBOL_ACTIVE_UNSET,
+
+    SYMBOL_SCROLL
 } from "./constants"
 
 export function setCategory(category) {
@@ -16,3 +21,17 @@ export function setSetting(setting) {
         setting,
     };
 }
+
+export const setSymbolActive = function setSymbolActive(data) {
+    return {
+        type: SYMBOL_ACTIVE_SET,
+        data
+    }
+}
+
+export const setSymbolScroll = function setSymbolScroll(symbol) {
+    return {
+        type: SYMBOL_SCROLL,
+        symbol,
+    };
+};

@@ -1,17 +1,15 @@
 import React from "react";
 import { BsVolumeDown } from "react-icons/bs";
-import { HiOutlineBell, HiOutlinePhotograph } from 'react-icons/hi'
 
 import styled from "styled-components";
 import circle from '../../assets/image/logo/circle.png';
 import D from '../../assets/image/logo/D.png';
 import dau from '../../assets/image/logo/dau.png';
-import logo from '../../assets/image/logo/logo.png';
-import avatar from '../../assets/image/icon/avatar.png';
+import logo from '../../assets/image/logo/logo.png';;
 
 const StyleHeader = styled.div`
     height: 40px;
-    margin: 10px 160px 20px 0;
+    margin: 10px 170px 20px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -21,19 +19,23 @@ const BoxIcon = styled.div`
 `
 
 const Icon = styled.div`
-    width: 40px;
+    width: 128px;
     height: 40px;
     background: var(--bg-icon);
-    border-radius: 0.5rem;
+    border-radius: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 5px 0 5px
+    color: #D1E0DE;
+    font-weight: bold;
+    &:hover {
+        background: radial-gradient(95.59% 167.1% at 32.8% 50%, #31DB9F 0%, #35D4D6 100%);
+    }
 `
 
 function DefaultHeader(props) {
     return (
-        <>
+        <div>
             <StyleHeader>
                 <div>
                     <img className="pr-2" style={{ height: '25px' }} src={circle} />
@@ -43,21 +45,18 @@ function DefaultHeader(props) {
                 </div>
                 <div>
                     <BsVolumeDown className="text-primary" style={{ height: '40px', width: '50px' }} />
-                    <span className="text-white fz-14">Tuyển tập cổ phiếu có thể tăng &gt; 100% khi ra tin tốt (Season 6: Bắt đáy lãi to lo gì Covid-19) </span>
+                    <span className="fz-14" style={{ color: '#65817B' }}>Tuyển tập cổ phiếu có thể tăng &gt; 100% khi ra tin tốt (Season 6: Bắt đáy lãi to lo gì Covid-19) </span>
                 </div>
                 <BoxIcon>
-                    <Icon>
-                        <HiOutlinePhotograph />
+                    <Icon className="mr-2">
+                        Đăng nhập
                     </Icon>
                     <Icon>
-                        <HiOutlineBell />
-                    </Icon>
-                    <Icon>
-                        <img style={{ width: '100%' }} src={avatar} />
+                        Đăng ký
                     </Icon>
                 </BoxIcon>
             </StyleHeader>
-        </>
+        </div>
     );
 };
 export default DefaultHeader;

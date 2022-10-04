@@ -1,15 +1,12 @@
-import { useSerialIds } from "highcharts";
 import React, { memo, useEffect, useState } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import { usePrevious } from "../../../../lib/useHook"
 
 import { AiOutlineRise, AiOutlineFall } from "react-icons/ai";
-import { GrFormAdd } from "react-icons/gr";
-import { HiMinusSm } from "react-icons/hi";
 import { BsCircleFill } from "react-icons/bs";
 
-import { _processMapDataIndex } from "../../../../utils";
+import { _processMapDataIndex, formatVolume10 } from "../../../../utils";
 import { makeGetReceive1101 } from "../../../../lib/seletor";
 import * as _ from 'lodash';
 
@@ -91,7 +88,7 @@ function CardChart(props) {
                                 }
                                 <span className={idata.cl}> {idata.change} &nbsp;{idata.changePc}</span>
                             </div>
-                            <div style={{ color: "#65817B", fontSize: "12px" }}>KL: {idata.vol} Cp</div>
+                            <div style={{ color: "#65817B", fontSize: "12px" }}>KL: {formatVolume10(idata.vol)} Cp</div>
                         </div>
                     </div>
                 </StyleChart>

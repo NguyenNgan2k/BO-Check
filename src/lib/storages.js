@@ -10,10 +10,10 @@ export const categoryDefault = [
         type: 'watchList'
     },
     {
-        id: 'hose',
         name: 'HOSE',
         path: '/bang-gia/chung-khoan-co-so/hose',
         type: 'group',
+        groupName: 'HSX',
         value: [],
         pinnedRow: [],
     },
@@ -21,12 +21,14 @@ export const categoryDefault = [
         name: 'HNX',
         path: '/bang-gia/chung-khoan-co-so/hnx',
         type: 'group',
+        groupName: 'HNX',
         value: [],
         pinnedRow: [],
     },
     {
         name: 'UPCOM',
         path: '/bang-gia/chung-khoan-co-so/upcom',
+        groupName: 'UPCOM',
         type: 'group',
         value: [],
         pinnedRow: [],

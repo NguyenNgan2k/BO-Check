@@ -5,11 +5,11 @@ import PriceTable from "../../../components/bang-gia/priceTable";
 import { makeGetCategory } from '../../../lib/seletor';
 
 function CKCoSo(props) {
-    const { category } = props;
+    const { match: { params }, categoryId } = props;
     return (
         <>
             <IndexIndicator />
-            <PriceTable category={category} />
+            <PriceTable categoryId={params.categoryId} />
         </>
     );
 };

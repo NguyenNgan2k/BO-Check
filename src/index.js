@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { applyMiddleware, createStore, compose } from 'redux';
 import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
-import './index.css';
+import './assets/css/index.css';
 
 
 import {
@@ -16,6 +16,7 @@ import {
 import App from './App';
 import DefaultLayout from './containers/defaultLayout';
 import LayoutCash from './containers/defaultLayout/LayoutCash';
+import SymbolDetail from 'containers/defaultLayout/SymbolDetail';
 import IndexSagas from './sagas';
 import IndexReducer from './reducers';
 
@@ -76,6 +77,12 @@ ReactDOM.render(
                   path="/cash"
                   component={() => (
                     <LayoutCash store={store} />
+                  )}
+                />
+                <Route
+                  path="/symbol"
+                  component={() => (
+                    <SymbolDetail store={store} />
                   )}
                 />
                 <Redirect from="/" to="/bang-gia" />

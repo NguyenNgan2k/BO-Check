@@ -1,9 +1,7 @@
 import DefaultHeader from "./DefaultHeader";
 import DefaultRight from "./DefaultRight";
 import DefaultFooter from "./DefaultFooter";
-import NavBar from "./NavBar";
-import CKCoSo from '../../containers/bang-gia/chung-khoan-co-so';
-import Bond from '../../containers/bang-gia/bond';
+import StockDetail from "containers/stock-detail";
 
 import styled from 'styled-components';
 import * as router from 'react-router-dom';
@@ -47,21 +45,14 @@ function DefaultLayout(props) {
             <StyledContainer>
                 <DefaultHeader />
                 <DefaultRight />
-                <NavBar />
                 <div>
                     <main>
                         <router.Switch>
                             <PrivateRoute
-                                path="/bang-gia/chung-khoan-co-so/:categoryId"
-                                component={CKCoSo}
+                                path="/symbol/detail/:sym"
+                                component={StockDetail}
                                 dispatch={props}
                             />
-                            <PrivateRoute
-                                path="/bang-gia/bond"
-                                component={Bond}
-                                dispatch={props}
-                            />
-                            <router.Redirect from="/bang-gia" to="/bang-gia/chung-khoan-co-so/hose" />
                         </router.Switch>
                     </main>
                 </div>

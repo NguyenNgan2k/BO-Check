@@ -1,7 +1,18 @@
+import { use } from "echarts";
 import React from "react";
-import { NavLink } from 'react-router-dom';
+import styled from "styled-components";
+import { NavLink, useLocation } from 'react-router-dom';
+
+const Hline = styled.div`
+    background: #fff;
+    width: 28px;
+    height: 2px;
+    }
+`
 
 function NavBar(props) {
+    const path = useLocation();
+    const { pathname } = path;
     return (
         <>
             <ul className="m-0 p-0" id="navbar">
@@ -10,24 +21,30 @@ function NavBar(props) {
                         style={
                             isActive => ({
                                 color: isActive ? "#EFF5F4" : "#8DA5A1",
-                                borderBottom: isActive ? "2px solid #EFF5F4" : ""
                             })
                         }
                     >
                         Chứng khoán cơ sở
                     </NavLink>
+                    {
+                        pathname.startsWith('/bang-gia/chung-khoan-co-so') &&
+                        <Hline />
+                    }
                 </li>
                 <li>
                     <NavLink to="/bang-gia/bond"
                         style={
                             isActive => ({
                                 color: isActive ? "#EFF5F4" : "#8DA5A1",
-                                borderBottom: isActive ? "2px solid #EFF5F4" : ""
                             })
                         }
                     >
                         Trái phiếu
                     </NavLink>
+                    {
+                        pathname.startsWith('/bang-gia/bond') &&
+                        <Hline />
+                    }
                 </li>
             </ul>
         </>

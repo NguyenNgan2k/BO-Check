@@ -10,7 +10,7 @@ import { BiDollarCircle } from "react-icons/bi";
 import { HiOutlineUser } from "react-icons/hi";
 
 const StyleRight = styled.div`
-position: absolute;
+position: fixed;
 background: #12211E;
 right: 0;
 top: 40px;

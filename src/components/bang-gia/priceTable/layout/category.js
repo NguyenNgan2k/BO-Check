@@ -1,47 +1,99 @@
 import React, { memo, useEffect } from "react";
-import PerfectScrollbar from 'react-perfect-scrollbar';
-import { connect } from "react-redux";
-import styled from "styled-components";
+import { connect, useDispatch } from "react-redux";
 import { Nav, Navbar } from 'react-bootstrap';
-import { Link, Redirect } from 'react-router-dom';
-import { makeGetCategory } from '../../../../lib/seletor';
-import * as _ from "lodash"
+import { makeGetCategory, makeGetAllStock } from 'lib/seletor';
+import * as _ from "lodash";
+import { RiArrowDropDownLine } from "react-icons/ri"
+import { FiSearch } from "react-icons/fi";
+import { NavLink } from 'react-router-dom';
+import StockSuggest from "components/select/StockSuggest";
+import { setSymbolScroll } from 'containers/client/actions'
 
 function Category(props) {
-    const { category } = props;
+    const dispatch = useDispatch();
+    const { categoryId, category, allStock } = props;
     const categoryGroup = _.filter(category, (o) => o.type === 'group');
-    console.log(categoryGroup)
+    function _handleAddStock(stock) {
+        if (!stock) return;
+        const categoryGroup = _.find(
+            category,
+            (o) => o.type === 'group' && o.path.endsWith('/bang-gia/chung-khoan-co-so/' + categoryId)
+        );
+        if (categoryGroup) {
+            dispatch(setSymbolScroll(stock));
+        }
+    }
     return (
         <>
-            <Navbar>
-                <Nav className="me-auto" >
-                    <Link href="/bang-gia/chung-khoan-co-so/tong-quan">Tổng quan</Link>
-
-                    <div className="dropdown">
-                        <button type="button" class="dropdown-toggle nav-link">
-                            Bảng giá (HOSE)
-                        </button>
-                        <div className="dropdown-menu">
-                            {
-                                categoryGroup &&
-                                !!categoryGroup.length &&
-                                categoryGroup.map((item, index) => {
-                                    return (
-                                        <Link
-                                            key={index}
-                                            to={item.path}
-                                            className="dropdown-item"
-                                            style={{
-                                                color: '#8DA5A1 !important'
-                                            }}
-                                        >
-                                            {item.name}
-                                        </Link>
-                                    );
-                                })
-                            }
-                        </div>
+            <Navbar className="p-0">
+                <Nav className="me-auto category" >
+                    <div className="d-flex align-items-center">
+                        <StockSuggest
+                            dataSuggest={allStock}
+                            classname={'form-add form-control fz-14'}
+                            placeholder="Tìm mã cổ phiếu ..."
+                            addStock={_handleAddStock}
+                        />
+                        <FiSearch className="search" color="#65817B" size={20} />
                     </div>
+                    <NavLink to="/bang-gia/chung-khoan-co-so/tong-quan"
+                        style={
+                            isActive => ({
+                                color: isActive ? "#31DB9F" : "#8DA5A1",
+                            })
+                        }
+                    >
+                        Tổng quan
+                    </NavLink>
+                    <div>
+                        <div className="dropdown-select">
+                            <div
+                                style={{
+                                    color: (categoryId === 'hose' || categoryId === 'hnx' || categoryId === 'upcom') ? "#31DB9F" : "#8DA5A1",
+                                }}
+                            >
+                                Bảng giá
+                                {
+                                    categoryId === 'hose'
+                                        ? ' (HOSE)'
+                                        : categoryId === 'hnx'
+                                            ? ' (HNX)'
+                                            : categoryId === 'upcom'
+                                                ? ' (UPCOM)'
+                                                : ''
+                                }
+                                <span><RiArrowDropDownLine size="30px" /></span>
+                            </div>
+                            <ul className="menu">
+                                {
+                                    categoryGroup &&
+                                    !!categoryGroup.length &&
+                                    categoryGroup.map((item, index) => {
+                                        return (
+                                            <li key={index}>
+                                                <NavLink
+                                                    to={item.path}
+                                                    className="fz-12"
+                                                >
+                                                    {item.name}
+                                                </NavLink>
+                                            </li>
+                                        );
+                                    })
+                                }
+                            </ul>
+                        </div>
+
+                    </div>
+                    <NavLink to="/bang-gia/chung-khoan-co-so/ds-co-phieu"
+                        style={
+                            isActive => ({
+                                color: isActive ? "#31DB9F" : "#8DA5A1",
+                            })
+                        }
+                    >
+                        Danh sách cổ phiếu
+                    </NavLink>
                 </Nav>
             </Navbar>
         </>
@@ -50,10 +102,12 @@ function Category(props) {
 
 const makeMapStateToProps = () => {
     const getCategory = makeGetCategory();
+    const getAllStock = makeGetAllStock();
 
     const mapSateToProps = (state) => {
         return {
             category: getCategory(state),
+            allStock: getAllStock(state),
         };
     };
     return mapSateToProps;

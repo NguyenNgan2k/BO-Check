@@ -10,16 +10,25 @@ import { handleApiErrors } from '../../lib/api-errors';
 import {
     INDEX_REQUESTING,
     WORLD_INDEX_REQUESTING,
+    ALL_STOCK_REQUESTING,
+    GET_STOCK_BY_ID_REQUESTING,
 } from './containers';
 import {
     indexRequestSuccess,
     indexRequestError,
 
     worldIndexRequestSuccess,
-    worldIndexRequestError
+    worldIndexRequestError,
+
+    allStockRequestSuccess,
+    allStockRequestError,
+
+    getStockByIdRequestSuccess,
+    getStockByIdRequestError
 } from './actions';
 import {
-    _processMapDataIndex
+    _processMapDataIndex,
+    _processMapDataCS
 } from '../../utils';
 
 const priceUrl = `${process.env.REACT_APP_PRICE_URL}`;
@@ -55,11 +64,52 @@ function* indexRequestFlow({ data }) {
     }
 }
 
+function allStockRequestApi() {
+    const url = `${priceUrl}/getlistallstock`;
+    const request = fetch(url);
+
+    return handleRequest(request)
+}
+
+function* allStockRequestFlow() {
+    try {
+        const dataList = yield call(allStockRequestApi);
+        yield put(allStockRequestSuccess(dataList));
+    } catch (error) {
+        yield put(allStockRequestError(error));
+    }
+}
+
+function stockByIdRequestApi(data) {
+    const url = `${priceUrl}/getliststockById/${data}`;
+    const request = fetch(url);
+
+    return handleRequest(request);
+}
+
+function* getStockByIdRequestFlow(action) {
+    try {
+        const { data } = action;
+        const dataList = yield call(stockByIdRequestApi, data);
+
+        let csData = [];
+        dataList.forEach((item) => {
+            let symbol = _processMapDataCS(item);
+            csData.push(symbol);
+        });
+        yield put(getStockByIdRequestSuccess(csData));
+    } catch (error) {
+        put(getStockByIdRequestError(error));
+    }
+
+}
 
 function* priceboardWatcher() {
     yield all([
         takeLatest(INDEX_REQUESTING, indexRequestFlow),
         //takeLatest(WORLD_INDEX_REQUESTING, worldIndexRequestFlow),
+        takeLatest(ALL_STOCK_REQUESTING, allStockRequestFlow),
+        takeLatest(GET_STOCK_BY_ID_REQUESTING, getStockByIdRequestFlow),
     ]);
 }
 

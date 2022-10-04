@@ -1,6 +1,8 @@
 import {
     CATEGORY_SET,
-    SETTING_SET
+    SETTING_SET,
+    SYMBOL_ACTIVE_SET,
+    SYMBOL_SCROLL
 } from "./constants"
 
 const initialSate = {
@@ -8,6 +10,9 @@ const initialSate = {
     categoryRequesting: false,
     categorySuccessful: false,
     categoryErrors: [],
+
+    symbolActive: null,
+    symbolScroll: null,
 
     setting: { indHid: [] },
 }
@@ -24,6 +29,17 @@ const reducer = function clientReducer(state = initialSate, action) {
             return {
                 ...state,
                 setting: action.setting,
+            };
+
+        case SYMBOL_ACTIVE_SET:
+            return {
+                ...state,
+                symbolActive: action.data,
+            };
+        case SYMBOL_SCROLL:
+            return {
+                ...state,
+                symbolScroll: action.symbol,
             };
 
         default:
