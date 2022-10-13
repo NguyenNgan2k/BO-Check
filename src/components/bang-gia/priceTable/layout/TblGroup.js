@@ -1,19 +1,38 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Fragment } from "react";
 import { memo } from "react";
-import { useDispatch } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import DatagridHeader from "./DatagridHeader";
 import DatagridRowGroup from "./DatagridRowGroup";
-import { setSymbolActive } from 'containers/client/actions'
+import { setSymbolScroll } from 'containers/client/actions';
 
-function TblGroup({ partSnap }) {
-    const dispatch = useDispatch;
-    const handleOpenModal = (sym) => {
-        dispatch(setSymbolActive(sym));
-    }
+
+function TblGroup(props) {
+    const dispatch = useDispatch();
+    const { partSnap, symScroll } = props;
+
+    useEffect(() => {
+        if (symScroll) {
+            scrollTo(symScroll);
+            dispatch(setSymbolScroll(null));
+        }
+
+    }, [symScroll])
+
+    const scrollTo = (id) => {
+        let rootRoll = document.getElementById(id + 'row')
+        if (rootRoll) {
+            rootRoll.scrollIntoView();
+            rootRoll.classList.add('active')
+        }
+        setTimeout(() => {
+            rootRoll.classList.remove('active')
+        }, 1500)
+    };
+
     return (
         <Fragment>
-            <div style={{ margin: '16px 170px 16px 0' }}>
+            <div style={{ margin: '16px 170px 16px 0' }} id="banggia">
                 <table style={{ width: "100%" }}>
                     <colgroup>
                         {/* Mã */}
@@ -76,7 +95,6 @@ function TblGroup({ partSnap }) {
                                     record={item}
                                     index={index}
                                     key={`${item.sym}-${index}`}
-
                                 />
                             ))
                         }
@@ -85,6 +103,18 @@ function TblGroup({ partSnap }) {
             </div>
         </Fragment>
     );
-}
+};
+const makeMapStateToProps = () => {
 
-export default memo(TblGroup);
+    const mapSateToProps = (state) => {
+        return {
+            symScroll: state.client.symbolScroll,
+        };
+    };
+    return mapSateToProps;
+};
+
+export default connect(makeMapStateToProps, {
+
+})(memo(TblGroup))
+

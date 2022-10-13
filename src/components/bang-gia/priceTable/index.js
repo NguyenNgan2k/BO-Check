@@ -171,4 +171,4 @@ export default connect(makeMapStateToProps, {
     setRegSymbol,
     unsetRegSymbol,
 
-})(memo(PriceTable))
+})(memo(PriceTable));

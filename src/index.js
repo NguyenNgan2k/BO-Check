@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { applyMiddleware, createStore, compose } from 'redux';
 import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
-import './assets/css/index.css';
 
 
 import {
@@ -22,6 +21,9 @@ import IndexReducer from './reducers';
 
 import WebSocketProvider from '../src/containers/socket/webSocket';
 import { WindowContextProvider } from './containers/windowActive';
+
+import 'react-perfect-scrollbar/dist/css/styles.css';
+import './assets/css/index.css';
 
 const sagaMiddleware = createSagaMiddleware();
 

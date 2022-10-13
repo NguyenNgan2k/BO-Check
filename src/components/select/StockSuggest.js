@@ -16,7 +16,7 @@ function renderSuggestion(suggestion) {
             <span className="fz-14 font-weight-bold text-white">
                 {suggestion.stock_code}
             </span>
-            <span className="fz-14 text-white">{` - ${suggestion.name_vn}`}</span>
+            <span style={{ color: '#D1E0DE' }} className="fz-12  font-weight-bold">{` - ${suggestion.name_vn}`}</span>
         </span>
     );
 }
@@ -34,6 +34,7 @@ class StockSuggest extends React.Component {
 
     getSuggestions = (value) => {
         const { dataSuggest } = this.props;
+
         const escapedValue = escapeRegexCharacters(value.trim());
 
         if (escapedValue === '') {
@@ -42,7 +43,10 @@ class StockSuggest extends React.Component {
 
         const regex = new RegExp('^' + escapedValue, 'i');
 
-        return dataSuggest.filter((item) => regex.test(item.stock_code));
+        const suggestion = dataSuggest.filter((item) => regex.test(item.stock_code));
+        console.log(suggestion)
+
+        return suggestion;
     };
 
     onChange = (event, { newValue, method }) => {
@@ -54,6 +58,7 @@ class StockSuggest extends React.Component {
 
     onKeyDown = (e) => {
         // return;
+        console.log(e)
         if (e.keyCode === 13 && !this.state.method) {
             // Enter
             e.preventDefault();
@@ -95,7 +100,7 @@ class StockSuggest extends React.Component {
             value,
             onChange: this.onChange,
             onKeyDown: this.onKeyDown,
-            className: classname, //form-add form-control fz-14
+            className: classname,
         };
         return (
             <Autosuggest

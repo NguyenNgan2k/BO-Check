@@ -57,10 +57,16 @@ function DefaultLayout(props) {
                                 dispatch={props}
                             />
                             <PrivateRoute
-                                path="/bang-gia/bond"
+                                path="/bang-gia/chung-khoan-co-so/tong-quan"
                                 component={Bond}
                                 dispatch={props}
                             />
+
+                            {/* <PrivateRoute
+                                path="/bang-gia/bond"
+                                component={Bond}
+                                dispatch={props}
+                            /> */}
                             <router.Redirect from="/bang-gia" to="/bang-gia/chung-khoan-co-so/hose" />
                         </router.Switch>
                     </main>

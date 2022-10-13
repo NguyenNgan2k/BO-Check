@@ -31,7 +31,7 @@ function LayoutCash(props) {
                 <DefaultHeader />
                 <DefaultRight />
                 <div>
-                    <main className="text-white">
+                    <main className="text-white"  >
                         index tiền mặt
                     </main>
                 </div>

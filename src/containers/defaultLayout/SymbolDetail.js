@@ -5,8 +5,7 @@ import StockDetail from "containers/stock-detail";
 
 import styled from 'styled-components';
 import * as router from 'react-router-dom';
-import { useContext, useEffect } from "react";
-import { WebSocketContext } from "../../containers/socket/webSocket";
+import { useEffect } from "react";
 import { getCategory } from "../../lib/storages";
 import { connect } from "react-redux";
 import { allStockRequest } from "../bang-gia/actions";
@@ -32,10 +31,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 
 function DefaultLayout(props) {
     const dispatch = useDispatch();
-    //khởi tạo socket
-    const ws = useContext(WebSocketContext);
     useEffect(() => {
-        ws.init();
         dispatch(allStockRequest());
         getCategory(props);
     }, [])

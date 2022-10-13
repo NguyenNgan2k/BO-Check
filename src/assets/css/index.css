@@ -15,6 +15,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+
+.fz-24 {
+  font-size: 24px !important;
+}
+
 .fz-20 {
   font-size: 20px !important;
 }
@@ -89,15 +94,18 @@ a {
   text-decoration: none !important;
 }
 
+.red,
 .d {
   color: #FE5050 !important;
 }
 
+.yellow,
 .r,
 .e {
   color: #FFA23A !important;
 }
 
+.green,
 .i {
   color: #33D49D !important;
 }
@@ -151,26 +159,41 @@ tr .text-right,
 }
 
 /* category */
+.category a {
+  line-height: 40px;
+  font-weight: bold;
+  margin: 0 40px;
+}
 
-.category ul {
-  padding-left: 16px;
+.dropdown-select {
+  position: relative;
+}
+
+ul.menu {
+  margin: 0;
+  padding: 0;
   background-color: #12211E;
   box-shadow: 1px 5px 32px rgba(188, 197, 204, 0.18);
   border-radius: 0.5rem;
   display: none;
   position: absolute;
   width: 148px;
-  left: 330px;
+  left: 0;
+  top: 100%,
 }
 
-.category li {
+.menu li {
   list-style-type: none;
   padding: 10px;
 }
 
-.category a {
+.dropdown-select .menu a {
+  padding: 0 !important;
+  margin: 0 !important;
+  line-height: 20px;
   color: #8DA5A1;
-  padding: 5px;
+  font-weight: bold;
+  text-align: center;
 }
 
 .category a:hover {
@@ -192,31 +215,35 @@ tr .text-right,
 }
 
 /* table */
-table {
+#banggia table {
   background: #12211E;
 }
 
-table,
+#banggia table,
 th,
 td {
   padding: 8px 0 8px 0;
   font-size: 12px;
 }
 
-tbody tr:hover {
+#banggia tbody tr:hover {
+  background-color: #a6c1d6;
+}
+
+#banggia tbody .active {
   background-color: #a6c1d6;
 }
 
 
-tbody tr:nth-child(even):hover {
+#banggia tbody tr:nth-child(even):hover {
   background: #a6c1d6;
 }
 
-tbody tr:nth-child(even) {
+#banggia tbody tr:nth-child(even) {
   background: #253734;
 }
 
-thead {
+#banggia thead {
   border-bottom: 1px solid #253734;
 }
 
@@ -269,4 +296,166 @@ thead {
 .search {
   position: absolute;
   left: 10px;
+}
+
+/* detailStock  */
+
+.divider {
+  border: 1px solid #253734;
+  margin: 0 16px 0 16px;
+  height: 60px;
+}
+
+/* Tabs 1 */
+
+.tab-content {
+  height: 100%;
+}
+
+.nav-tabs {
+  margin: 0 !important;
+  padding: 16px !important;
+  border-bottom: none !important;
+  border-bottom: 1px solid #253734 !important;
+}
+
+.nav-tabs a {
+  color: #fff !important;
+  background-color: #253734 !important;
+  font-size: 16px !important;
+  font-weight: bold !important;
+  margin-right: 10px !important;
+  border-radius: 1rem !important;
+  padding: 12px 20px !important;
+  border: none !important;
+}
+
+.nav-tabs .nav-link.active {
+  box-shadow: 0px 8px 20px 0px rgba(50, 219, 162, 0.35);
+  background: radial-gradient(95.59% 167.1% at 32.8% 50%, #31DB9F 0%, #35D4D6 100%) !important;
+}
+
+/* Tab 2 */
+
+.tab2 li {
+  list-style-type: none;
+  margin-right: 16px;
+  cursor: pointer;
+}
+
+.tab2 a {
+  color: #8DA5A1;
+  font-size: 16px;
+}
+
+.tab2 a:hover {
+  color: #EFF5F4 !important;
+  font-weight: bold !important;
+}
+
+.tab2 .active {
+  color: #EFF5F4 !important;
+  font-weight: bold !important;
+}
+
+iframe {
+  height: 660px !important;
+}
+
+/* form search */
+
+.formControl {
+  background: #253734;
+  color: #EFF5F4;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 6px 56px 6px 12px;
+  border-radius: 12px;
+  margin: 0 15px;
+}
+
+.level1 {
+  font-weight: bold;
+  font-size: 14px !important;
+  background: #253734;
+  /* border-radius: 12px !important;
+  padding: 14px 0 14px 18px !important; */
+}
+
+.level1 td {
+  font-weight: bold;
+  font-size: 14px
+}
+
+.level2,
+.level3 {
+  font-size: 12px;
+  border-bottom: 1px solid #253734;
+}
+
+/* Card */
+
+.card {
+  position: absolute;
+  left: 220px;
+  top: 30px;
+  padding: 16px;
+  background: #12211e;
+  border-radius: 20px !important;
+  z-index: 3;
+}
+
+.card input {
+
+  height: 44px;
+  font-size: 16px;
+  color: #8DA5A1;
+  padding: 10px 16px 10px 44px;
+  background: #253734;
+  border: 0;
+  border-radius: 1rem;
+}
+
+.card li:hover {
+  cursor: pointer;
+  background-color: #0e3b33;
+}
+
+/* suggsest  stock*/
+
+.react-autosuggest__suggestions-container {
+  position: absolute;
+  top: 100%;
+  z-index: 1000;
+  width: 340px;
+  max-height: 350px;
+  overflow: auto;
+  display: none;
+  background: #12211E;
+  box-shadow: 2px 16px 32px rgba(188, 197, 204, 0.18);
+  border-radius: 16px;
+
+}
+
+.react-autosuggest__suggestions-container--open {
+  display: block;
+}
+
+.react-autosuggest__suggestions-container ul {
+  margin: 24px 0;
+  padding: 0;
+}
+
+ul.react-autosuggest__suggestions-list li {
+  margin-bottom: 10px;
+  padding: 12px 24px;
+  cursor: pointer;
+}
+
+ul.react-autosuggest__suggestions-list li:hover {
+  background-color: #0e3b33;
+}
+
+.react-autosuggest__suggestion--highlighted {
+  background-color: #0e3b33;
 }

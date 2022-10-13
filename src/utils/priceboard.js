@@ -219,7 +219,6 @@ export function _process3220(data) {
 }
 
 export function _process3250(data) {
-    console.log('_process3250')
     const _type = data.symbol.startsWith('VN30F') ? 'D' : 'A';
     let _rootFBVol = document.getElementById(data.symbol + 'fBVol');
     let _rootFSVol = document.getElementById(data.symbol + 'fSVol');

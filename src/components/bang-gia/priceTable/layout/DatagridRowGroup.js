@@ -55,7 +55,7 @@ function DatagridRowGroup({ record, index }) {
                     overlay={<Tooltip id={`tooltip-c`}>Click đúp xem chi tiết</Tooltip>}
                 >
                     <Link
-                        className="custom-cursor"
+                        className={"custom-cursor " + cl}
                         to={'/symbol/detail/' + record.sym}
                     >
                         {record.sym}
