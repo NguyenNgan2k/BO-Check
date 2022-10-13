@@ -56,12 +56,6 @@ function DefaultLayout(props) {
                                 component={CKCoSo}
                                 dispatch={props}
                             />
-                            <PrivateRoute
-                                path="/bang-gia/chung-khoan-co-so/tong-quan"
-                                component={Bond}
-                                dispatch={props}
-                            />
-
                             {/* <PrivateRoute
                                 path="/bang-gia/bond"
                                 component={Bond}

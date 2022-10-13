@@ -7,7 +7,7 @@ import { getCodeByNameIndex } from "../../../utils";
 import { WebSocketContext } from "../../../containers/socket/webSocket";
 import { WindowContext } from '../../../containers/windowActive';
 
-import Category from './layout/Category';
+
 import TblGroup from "./layout/TblGroup";
 import { useState } from "react";
 
@@ -57,6 +57,7 @@ function PriceTable(props) {
     }, [serverStatus]);
 
     useEffect(() => {
+
         if (catalogSelected &&
             ((allStock && !_.isEqual(allStock, prevAllStock)) ||
                 !_.isEqual(catalogSelected, prevCatalogSelected) ||
@@ -67,6 +68,7 @@ function PriceTable(props) {
     }, [catalogSelected, allStock])
 
     const fetchCategoryData = () => {
+        console.log(catalogSelected)
         if (catalogSelected.type === 'group') {
             setIsLoading(true);
             return fetchGroup(catalogSelected.name, catalogSelected.groupName);
@@ -75,7 +77,9 @@ function PriceTable(props) {
 
     const fetchGroup = (name, grName) => {
         name = name === 'HOSE' ? 'HSX' : name;
+        console.log(name, grName)
         if (name === grName) {
+            console.log('chay vo')
             //get all group 
             setIsLoading(true);
             const params = getCodeByNameIndex(grName);
@@ -134,9 +138,9 @@ function PriceTable(props) {
         setRegSymbol(symbol)
         return ws.sendMessage(payload)
     }
+    console.log(partSnap)
     return (
         <>
-            <Category categoryId={props.categoryId} />
             {
                 !isPt && catalogSelected && catalogSelected.type === 'group'
                 && (<TblGroup partSnap={partSnap} />)
