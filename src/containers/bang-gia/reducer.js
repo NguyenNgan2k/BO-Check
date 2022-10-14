@@ -17,6 +17,10 @@ import {
     GET_STOCK_BY_ID_REQUEST_SUCCESS,
     GET_STOCK_BY_ID_REQUEST_ERROR,
 
+    TOP_CHANGE_BY_ID_REQUESTING,
+    TOP_CHANGE_BY_ID_REQUEST_ERROR,
+    TOP_CHANGE_BY_ID_REQUEST_SUCCESS,
+
     CLEAR_PART_REQUEST,
 
 } from './containers';
@@ -36,6 +40,8 @@ const initialSate = {
     part: [],
     partRequesting: false,
     partSuccessful: false,
+
+    topChangeById: null,
 }
 
 
@@ -186,6 +192,19 @@ const reducer = function widgetReducer(state = initialSate, action) {
                 part: [],
                 partRequesting: false,
                 partSuccessful: false,
+            };
+
+        case TOP_CHANGE_BY_ID_REQUEST_ERROR:
+            return {
+                ...state,
+                topChangeById: null,
+            };
+
+        case TOP_CHANGE_BY_ID_REQUEST_SUCCESS:
+            console.log(action, action.resData)
+            return {
+                ...state,
+                topChangeById: action.resData,
             };
 
         default:

@@ -8,6 +8,8 @@ const getPart = (state) => {
     return state.priceBoard.partId;
 };
 
+const getTopChangeById = (state) => state.dashboard.topChangeById;
+
 /***************************************** MAKE GET *************************************** */
 
 
@@ -20,3 +22,7 @@ export const makeGetAllStock = () =>
 
 export const makeGetPart = () =>
     createSelector([getPart], (part) => part);
+
+
+export const makeGetTopChangeById = () =>
+    createSelector([getTopChangeById], (topChangeById) => topChangeById);

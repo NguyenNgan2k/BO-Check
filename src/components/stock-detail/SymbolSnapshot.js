@@ -22,8 +22,6 @@ const Info = styled.div`
 
 function SymbolSnapshot(props) {
     const { stockDetail, sym, allStock } = props;
-    console.log(sym);
-    console.log(allStock)
     const [showModal, setShowModal] = useState(false);
     const [textSearch, setTextSearch] = useState('');
     const [suggestions, setSuggestions] = useState([]);

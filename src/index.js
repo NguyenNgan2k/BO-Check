@@ -18,6 +18,7 @@ import LayoutCash from './containers/defaultLayout/LayoutCash';
 import SymbolDetail from 'containers/defaultLayout/SymbolDetail';
 import IndexSagas from './sagas';
 import IndexReducer from './reducers';
+import LayoutHome from 'containers/defaultLayout/LayoutHome';
 
 import WebSocketProvider from '../src/containers/socket/webSocket';
 import { WindowContextProvider } from './containers/windowActive';
@@ -64,6 +65,12 @@ ReactDOM.render(
           <React.Suspense>
             <Route path="/" component={App}>
               <Switch>
+                <Route
+                  path="/home"
+                  component={() => (
+                    <LayoutHome store={store} />
+                  )}
+                />
                 <Route
                   path={
                     [

@@ -44,7 +44,6 @@ class StockSuggest extends React.Component {
         const regex = new RegExp('^' + escapedValue, 'i');
 
         const suggestion = dataSuggest.filter((item) => regex.test(item.stock_code));
-        console.log(suggestion)
 
         return suggestion;
     };
@@ -58,7 +57,7 @@ class StockSuggest extends React.Component {
 
     onKeyDown = (e) => {
         // return;
-        console.log(e)
+
         if (e.keyCode === 13 && !this.state.method) {
             // Enter
             e.preventDefault();

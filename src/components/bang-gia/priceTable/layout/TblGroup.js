@@ -23,10 +23,10 @@ function TblGroup(props) {
         let rootRoll = document.getElementById(id + 'row')
         if (rootRoll) {
             rootRoll.scrollIntoView();
-            rootRoll.classList.add('active')
+            rootRoll.classList.add('chose')
         }
         setTimeout(() => {
-            rootRoll.classList.remove('active')
+            rootRoll.classList.remove('chose')
         }, 1500)
     };
 

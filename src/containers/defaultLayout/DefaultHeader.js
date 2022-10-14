@@ -43,9 +43,12 @@ function DefaultHeader(props) {
                     <img className="pr-1" style={{ height: '12px' }} src={dau} />
                     <img className="pr-1" style={{ height: '12px' }} src={logo} />
                 </div>
-                <div>
+                <div className="d-flex align-items-center">
                     <BsVolumeDown className="text-primary" style={{ height: '40px', width: '50px' }} />
-                    <span className="fz-14" style={{ color: '#65817B' }}>Tuyển tập cổ phiếu có thể tăng &gt; 100% khi ra tin tốt (Season 6: Bắt đáy lãi to lo gì Covid-19) </span>
+                    <marquee width="100%" behavior="scroll">
+                        <span className="fz-14" style={{ color: '#65817B' }}>Tuyển tập cổ phiếu có thể tăng &gt; 100% khi ra tin tốt (Season 6: Bắt đáy lãi to lo gì Covid-19) </span>
+                    </marquee>
+
                 </div>
                 <BoxIcon>
                     <Icon className="mr-2">

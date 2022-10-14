@@ -1,6 +1,6 @@
 import React, { memo, useEffect, useContext } from "react";
 import { connect } from "react-redux";
-import { makeGetAllStock, makeGetCategorySelected, makeGetPart, makeGetSocketStatus, } from "../../../lib/seletor";
+import { makeGetAllStock, makeGetCategorySelected, makeGetPart, makeGetSocketStatus } from "../../../lib/seletor";
 import { usePrevious } from "../../../lib/useHook";
 import * as _ from 'lodash';
 import { getCodeByNameIndex } from "../../../utils";
@@ -68,7 +68,6 @@ function PriceTable(props) {
     }, [catalogSelected, allStock])
 
     const fetchCategoryData = () => {
-        console.log(catalogSelected)
         if (catalogSelected.type === 'group') {
             setIsLoading(true);
             return fetchGroup(catalogSelected.name, catalogSelected.groupName);
@@ -77,9 +76,7 @@ function PriceTable(props) {
 
     const fetchGroup = (name, grName) => {
         name = name === 'HOSE' ? 'HSX' : name;
-        console.log(name, grName)
         if (name === grName) {
-            console.log('chay vo')
             //get all group 
             setIsLoading(true);
             const params = getCodeByNameIndex(grName);
@@ -138,7 +135,6 @@ function PriceTable(props) {
         setRegSymbol(symbol)
         return ws.sendMessage(payload)
     }
-    console.log(partSnap)
     return (
         <>
             {

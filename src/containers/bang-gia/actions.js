@@ -15,6 +15,10 @@ import {
     GET_STOCK_BY_ID_REQUEST_SUCCESS,
     GET_STOCK_BY_ID_REQUEST_ERROR,
 
+    TOP_CHANGE_BY_ID_REQUESTING,
+    TOP_CHANGE_BY_ID_REQUEST_ERROR,
+    TOP_CHANGE_BY_ID_REQUEST_SUCCESS,
+
     CLEAR_PART_REQUEST,
 
 } from './containers'
@@ -105,5 +109,26 @@ export const getStockByIdRequestError = function getStockByIdRequestError(error)
 export const clearPartRequest = function clearPartRequest(data) {
     return {
         type: CLEAR_PART_REQUEST,
+    };
+};
+
+export const topChangeByIdRequest = function topChangeByIdRequest(data) {
+    return {
+        type: TOP_CHANGE_BY_ID_REQUESTING,
+        data,
+    };
+};
+
+export const topChangeByIdSuccess = function topChangeByIdSuccess(resData) {
+    return {
+        type: TOP_CHANGE_BY_ID_REQUEST_SUCCESS,
+        resData,
+    };
+};
+
+export const topChangeByIdError = function topChangeByIdError(error) {
+    return {
+        type: TOP_CHANGE_BY_ID_REQUEST_ERROR,
+        error,
     };
 };

@@ -50,7 +50,7 @@ function DefaultRight(props) {
                     </li>
                     <li className={pathname.startsWith('/home') ? "icon-active" : ""}>
                         <Link
-                            to={'home'}
+                            to={'/home'}
                         >
                             <RiHomeSmile2Line color="white" size={25} />
                         </Link>

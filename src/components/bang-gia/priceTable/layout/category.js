@@ -12,7 +12,6 @@ import { setSymbolScroll } from 'containers/client/actions'
 function Category(props) {
     const dispatch = useDispatch();
     const { categoryId, category, allStock } = props;
-    console.log(categoryId)
     const categoryGroup = _.filter(category, (o) => o.type === 'group');
     function _handleAddStock(stock) {
         if (!stock) return;

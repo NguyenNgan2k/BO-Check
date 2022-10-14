@@ -230,7 +230,7 @@ td {
   background-color: #a6c1d6;
 }
 
-#banggia tbody .active {
+#banggia tbody .chose {
   background-color: #a6c1d6;
 }
 
@@ -458,4 +458,94 @@ ul.react-autosuggest__suggestions-list li:hover {
 
 .react-autosuggest__suggestion--highlighted {
   background-color: #0e3b33;
+}
+
+/* tab top cổ phiếu */
+
+.top .tab2 li {
+  margin-right: 32px;
+}
+
+.top .tab2 a {
+  font-size: 14px !important;
+  color: '#8DA5A1';
+  padding: 10px;
+}
+
+.top .tab2 a:hover {
+  background-color: #253734;
+  border-radius: 12px;
+}
+
+.top .tab2 .active {
+  background-color: #253734;
+  border-radius: 12px;
+}
+
+/* chartTrend */
+
+.progress-type-1 .progress-bar {
+  background-color: #33D49D;
+}
+
+.progress-type-2 .progress-bar {
+  background-color: rgba(71, 216, 167, 0.9);
+}
+
+.progress-type-3 .progress-bar {
+  background-color: rgba(92, 221, 177, 0.8);
+}
+
+.progress-type-4 .progress-bar {
+  background-color: rgba(112, 225, 186, 0.7);
+}
+
+.progress-type-5 .progress-bar {
+  background-color: rgba(133, 229, 196, 0.6);
+}
+
+.progress-type-6 .progress-bar {
+  background-color: rgba(153, 233, 206, 0.5);
+}
+
+.progress-type-7 .progress-bar {
+  background-color: rgba(173, 238, 216, 0.4);
+}
+
+.progress-type-8 .progress-bar {
+  background-color: rgba(194, 242, 226, 0.3);
+}
+
+.progress-type-9 .progress-bar {
+  background-color: rgba(240, 61, 61, 0.3);
+}
+
+.progress-type-10 .progress-bar {
+  background-color: rgba(240, 61, 61, 0.4);
+}
+
+.progress-type-11 .progress-bar {
+  background-color: rgba(240, 61, 61, 0.5);
+}
+
+/* top Trend  */
+
+.top-trend-i {
+  color: #33D49D;
+  background: #25473B;
+  font-size: 12px;
+  border-radius: 5px;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+}
+
+.top-trend-d {
+  color: #FE5050;
+  background: #532B2B;
+  font-size: 12px;
+  border-radius: 5px;
+  padding: 2px;
+  display: flex;
+  align-items: center;
 }
