@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import IndexIndicator from "../../../components/bang-gia/indexIndicator";
 import PriceTable from "../../../components/bang-gia/priceTable";
 import { makeGetCategory } from '../../../lib/seletor';
-import Category from "components/bang-gia/priceTable/layout/Category";
+import Category from "components/bang-gia/priceTable/layout/category";
 import TongQuan from "components/bang-gia/tong-quan/TongQuan";
 
 function CKCoSo(props) {

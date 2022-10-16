@@ -549,3 +549,14 @@ ul.react-autosuggest__suggestions-list li:hover {
   display: flex;
   align-items: center;
 }
+
+/* banner */
+
+.banner button {
+  background: radial-gradient(95.59% 167.1% at 32.8% 50%, #31DB9F 0%, #35D4D6 100%);
+  border: none;
+  color: #D1E0DE;
+  font-size: 16px;
+  border-radius: 18px;
+  padding: 16px 70px;
+}
