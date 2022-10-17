@@ -110,10 +110,12 @@ a {
   color: #33D49D !important;
 }
 
+.violet,
 .c {
   color: #CA5AFF !important;
 }
 
+.cyan,
 .f {
   color: #3EAEFF !important;
 }
@@ -548,4 +550,33 @@ ul.react-autosuggest__suggestions-list li:hover {
   padding: 2px;
   display: flex;
   align-items: center;
+}
+
+/* banner */
+
+.banner button {
+  background: radial-gradient(95.59% 167.1% at 32.8% 50%, #31DB9F 0%, #35D4D6 100%);
+  border: none;
+  color: #D1E0DE;
+  font-size: 16px;
+  border-radius: 12px;
+  padding: 12px 20px;
+  font-weight: bold;
+}
+
+.new .rounded {
+  height: 267.625px;
+  border-radius: 16px !important
+}
+
+.tem img {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #31DB9F;
+  border-radius: 50%;
+}
+
+.cardtop .btn-info {
+  background: #253734;
+  color: #D1E0DE;
 }

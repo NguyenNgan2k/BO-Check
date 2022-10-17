@@ -8,7 +8,6 @@ import * as router from 'react-router-dom';
 const StyledContainer = styled.div`
 position: relative;
 background: var(--bg);
-height: 1080px;
 padding: 40px 0 0 40px;
 `
 const PrivateRoute = ({ component: Component, ...rest }) => {
