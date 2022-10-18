@@ -577,6 +577,6 @@ ul.react-autosuggest__suggestions-list li:hover {
 }
 
 .cardtop .btn-info {
-  background: #253734;
+  background: #253734 !important;
   color: #D1E0DE;
 }

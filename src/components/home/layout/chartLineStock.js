@@ -18,12 +18,12 @@ function ChartLineStock(props) {
         },
         series: [
             {
-                markLine: {
-                    data: [100],
-                    lineStyle: {
-                        color: '#43605B'
-                    },
-                },
+                // markLine: {
+                //     data: [100],
+                //     lineStyle: {
+                //         color: '#43605B'
+                //     },
+                // },
                 lineStyle: {
                     color: '#FFA23A ',
                     width: 1,

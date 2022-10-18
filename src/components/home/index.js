@@ -27,7 +27,6 @@ import { CgCalendarDates } from 'react-icons/cg';
 
 import CardTopChange from "./layout/cardTopChange";
 
-
 const StyledContainer = styled.div`
     margin-right: 170px;
 `
@@ -78,10 +77,9 @@ const Tem = styled.div`
     margin-top:24px;
     box-shadow: 2px 16px 32px rgb(188 197 204 / 18%);
 `
-
-
 function Home(props) {
     return (
+
         <StyledContainer className="banner">
             <Banner>
                 <div style={{ color: '#EFF5F4', fontSize: '50px', fontWeight: 'bold', padding: '120px 0 0 75px' }}>
@@ -92,6 +90,7 @@ function Home(props) {
                         Cùng xây dựng mục tiêu đầu tư hiệu quả ngay hôm nay!
                     </div>
                     <div>
+
                         <button style={{ padding: '16px 70px' }} >
                             Đặt mục tiêu
                         </button>
