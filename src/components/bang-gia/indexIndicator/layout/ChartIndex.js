@@ -45,6 +45,14 @@ function ChartIndex(props) {
                 lineStyle: {
                     width: 1,
                 },
+                markLine: {
+                    data: [{ yAxis: 100 }],
+                    lineStyle: {
+                        color: '#43605B',
+                        type: 'dashed',
+                    },
+                    symbol: 'none',
+                },
                 data: [],
             },
         ],

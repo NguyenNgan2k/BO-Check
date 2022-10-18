@@ -9,6 +9,7 @@ import * as _ from 'lodash';
 import { AiOutlineStar } from 'react-icons/ai'
 import { numberFormat } from "utils";
 import ChartLineStock from "./chartLineStock";
+import { unsetRegSymbol } from "containers/socket/actions";
 
 function CardTopChange(props) {
     const [tabActive, setTabActive] = useState('ckcs');
@@ -17,12 +18,8 @@ function CardTopChange(props) {
     const prevTopInterest = usePrevious();
     const ws = useContext(WebSocketContext);
 
-    const { topInterest } = props;
+    const { topInterest, unsetRegSymbol } = props;
     console.log(topInterest)
-
-    useEffect(() => {
-        ws.init()
-    }, [])
 
     useEffect(() => {
         if (tabActive === 'ckcs') {
@@ -32,20 +29,22 @@ function CardTopChange(props) {
     }, [tabActive]);
 
     useEffect(() => {
-        if (topInterest && !_.isEqual(topInterest, prevTopInterest)) {
+        if (topInterest &&
+            !_.isEqual(topInterest, prevTopInterest)) {
             handleRegisterData(_.map(topInterest, 'STOCK_CODE').join(','));
         }
 
         return () => {
             handleLeaveData(socketRegis);
+            unsetRegSymbol();
         }
     }, [tabActive])
 
     const handleRegisterData = (symbol) => {
         const payload = {
-            type: 'join',
-            data: symbol
-        }
+            action: 'join',
+            data: symbol,
+        };
 
         setSocketRegis(symbol);
         console.log('regis data', JSON.stringify(payload))
@@ -54,7 +53,7 @@ function CardTopChange(props) {
 
     const handleLeaveData = (symbol) => {
         const payload = {
-            type: 'leave',
+            action: 'leave',
             data: symbol
         }
 
@@ -126,7 +125,7 @@ function CardTopChange(props) {
                         !!topInterest.length &&
                         topInterest.map((item, index) => {
                             return (
-                                <tr key={index}>
+                                <tr key={index} id={item.STOCK_CODE + 'sym'}>
                                     <td style={{ color: '#65817B' }}><AiOutlineStar size={15} /> {index + 1}</td>
                                     <td>
                                         {item.STOCK_CODE} <span style={{ color: '#65817B' }}> {item.STOCK_NAME}</span>
@@ -141,10 +140,10 @@ function CardTopChange(props) {
                                                             : 'r'
                                         }
                                     >
-                                        {numberFormat(item.PRICE, 2)}
+                                        <span>{numberFormat(item.PRICE, 2, '0')}</span>
                                     </td>
                                     <td className={'d-flex ' + item.COLOR}>
-                                        <span id={item.STOCK_CODE + 'change'} style={{ width: '10s0px' }}>
+                                        <span id={item.STOCK_CODE + 'change'} style={{ marginRight: '100px' }}>
                                             {item.PERCENT_CHANGE}%
                                         </span>
                                         <span><ChartLineStock record={item} /></span>
@@ -183,4 +182,4 @@ const makeMapStateToProps = () => {
     return mapStateToProps;
 };
 
-export default connect(makeMapStateToProps)(CardTopChange);
+export default connect(makeMapStateToProps, { unsetRegSymbol })(CardTopChange);

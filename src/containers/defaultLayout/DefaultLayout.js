@@ -3,7 +3,6 @@ import DefaultRight from "./DefaultRight";
 import DefaultFooter from "./DefaultFooter";
 import NavBar from "./NavBar";
 import CKCoSo from '../../containers/bang-gia/chung-khoan-co-so';
-import Bond from '../../containers/bang-gia/bond';
 
 import styled from 'styled-components';
 import * as router from 'react-router-dom';

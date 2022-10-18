@@ -24,7 +24,7 @@ import mbb from 'assets/image/logo/mbb.png';
 import { formatDate, formatDateTime } from "utils";
 import { AiFillClockCircle } from 'react-icons/ai';
 import { CgCalendarDates } from 'react-icons/cg';
-
+import Slide from './layout/slide/Slide';
 import CardTopChange from "./layout/cardTopChange";
 
 const StyledContainer = styled.div`
@@ -125,6 +125,18 @@ function Home(props) {
             </GirdCard>
             <IndexIndicator />
             <Title>Khám phá trải nghiệm đầu tư D-Invest</Title>
+            <div className="d-flex">
+                <div style={{ width: '60%' }}>
+                    <Slide />
+                </div>
+
+                <div style={{ width: '40%' }}>
+                    <div style={{ color: '#EFF5F4', fontSize: '20px', fontWeight: 'bold' }}>
+                        Bảng giá đầy đủ - Thông tin chính xác
+                    </div>
+                </div>
+            </div>
+
             <Title>Tin tức nổi bật</Title>
             <News className="new">
                 <div style={{

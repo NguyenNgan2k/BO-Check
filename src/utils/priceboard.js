@@ -109,11 +109,11 @@ export function _process3220(data) {
     let _rootAveP = document.getElementById(data.sym + 'aveP');
     let _rootSym = document.getElementById(data.sym + 'sym');
 
-    if (!_rootSym || !_rootLastVol) return;
+    if (!_rootSym) return;
 
     const _oldPrice = _rootLastPrice.children[0].innerHTML;
     const _newPrice = numberFormat(data.lastPrice, _type === 'D' ? 1 : 2);
-    const _oldVol = _rootLastVol.children[0].innerHTML;
+    const _oldVol = _rootLastVol ? _rootLastVol.children[0].innerHTML : 0;
     const _newVol =
         _type === 'D' ? numberFormat(data.lastVol) : formatVolume10(data.lastVol);
 

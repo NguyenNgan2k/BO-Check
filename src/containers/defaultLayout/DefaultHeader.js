@@ -5,7 +5,8 @@ import styled from "styled-components";
 import circle from '../../assets/image/logo/circle.png';
 import D from '../../assets/image/logo/D.png';
 import dau from '../../assets/image/logo/dau.png';
-import logo from '../../assets/image/logo/logo.png';;
+import logo from '../../assets/image/logo/logo.png';
+import { WebSocketContext } from "../../containers/socket/webSocket";
 
 const StyleHeader = styled.div`
     height: 40px;
@@ -34,6 +35,10 @@ const Icon = styled.div`
 `
 
 function DefaultHeader(props) {
+    // const ws = useContext(WebSocketContext);
+    // useEffect(() => {
+    //     ws.init();
+    // }, [])
     return (
         <div>
             <StyleHeader>
