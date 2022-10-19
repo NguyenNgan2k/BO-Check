@@ -6,7 +6,6 @@ const infoUrl = `${process.env.REACT_APP_INFO_URL}`;
 
 function ChartLineStock(props) {
     const { record } = props;
-    console.log(record)
     const abortController = new AbortController();
 
     const DEFAULT_OPTION = {
@@ -95,7 +94,6 @@ function ChartLineStock(props) {
         } else {
             newOption.series[0].itemStyle.color = '#FFA23A ';
         }
-        console.log(newOption.series[0].itemStyle.color)
         setOption(newOption);
     }
 

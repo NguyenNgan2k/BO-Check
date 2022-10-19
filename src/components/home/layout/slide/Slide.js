@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import slide from './slide.css';
-import img1 from 'assets/image/banner/bn1.png';
-import img2 from 'assets/image/banner/bn2.png';
-import img3 from 'assets/image/banner/bn3.png';
+import img1 from 'assets/image/banner/slide1.png';
+import img2 from 'assets/image/banner/slide2.png';
+import img3 from 'assets/image/banner/slide3.png';
 import { BsEmojiNeutralFill } from "react-icons/bs";
 
 const arrImage = [
@@ -26,68 +26,81 @@ const arrImage = [
 function Slide() {
     const [selected, setSelected] = useState(2);
     return (
-        <div className="slide-container" >
-            {
-                arrImage &&
-                arrImage.map((item, index) => {
-                    if (index < selected - 2) {
-                        return (
-                            <div className="hindeleft"
-                                key={index}
-                            >
+        <div>
+            <div className="slide-container" >
+                {
+                    arrImage &&
+                    arrImage.map((item, index) => {
+                        if (index < selected - 2) {
+                            return (
+                                <div className="hindeleft"
+                                    key={index}
+                                >
 
-                            </div>
-                        );
-                    }
-                    if (index === selected - 2) {
-                        return (
-                            <div className="prev"
-                                key={index}
-                                onClick={() => setSelected(index + 1)}
-                            >
-                                <img src={item.img} />
-                                <div className="title">{item.title}</div>
-                                <div className="content">{item.content}</div>
-                            </div>
-                        );
-                    }
-                    if (index === selected - 1) {
-                        return (
-                            <div className="select"
-                                key={index}
-                                onClick={() => setSelected(index + 1)}
-                            >
-                                <img src={item.img} />
-                                <div className="title">{item.title}</div>
-                                <div className="content">{item.content}</div>
-                            </div>
-                        );
-                    }
-                    if (index === selected) {
-                        return (
-                            <div className="next"
-                                key={index}
-                                onClick={() => setSelected(index + 1)}
-                            >
-                                <img src={item.img} />
-                                <div className="title">{item.title}</div>
-                                <div className="content">{item.content}</div>
-                            </div>
-                        );
-                    }
-                    if (index > selected) {
-                        return (
-                            <div className="hinderight"
-                                key={index}
-                            >
+                                </div>
+                            );
+                        }
+                        if (index === selected - 2) {
+                            return (
+                                <div className="prev"
+                                    key={index}
+                                    onClick={() => setSelected(index + 1)}
+                                >
+                                    <img src={item.img} />
+                                    <div className="title">{item.title}</div>
+                                    <div className="content">{item.content}</div>
+                                </div>
+                            );
+                        }
+                        if (index === selected - 1) {
+                            return (
+                                <div className="select"
+                                    key={index}
+                                    onClick={() => setSelected(index + 1)}
+                                >
+                                    <img src={item.img} />
+                                    <div className="title">{item.title}</div>
+                                    <div className="content">{item.content}</div>
+                                </div>
+                            );
+                        }
+                        if (index === selected) {
+                            return (
+                                <div className="next"
+                                    key={index}
+                                    onClick={() => setSelected(index + 1)}
+                                >
+                                    <img src={item.img} />
+                                    <div className="title">{item.title}</div>
+                                    <div className="content">{item.content}</div>
+                                </div>
+                            );
+                        }
+                        if (index > selected) {
+                            return (
+                                <div className="hinderight"
+                                    key={index}
+                                >
 
-                            </div>
-                        );
-                    }
-                    return null;
+                                </div>
+                            );
+                        }
+                        return null;
 
-                })
-            }
+                    })
+                }
+            </div>
+            <div className="pagination">
+                {arrImage.map((item, index) => (
+                    <div
+                        className={
+                            'pagination-item ' + (index === selected - 1 ? 'active' : '')
+                        }
+                        key={index}
+                        onClick={() => setSelected(index + 1)}
+                    ></div>
+                ))}
+            </div>
         </div>
     );
 }

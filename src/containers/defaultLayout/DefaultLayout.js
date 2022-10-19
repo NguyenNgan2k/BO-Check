@@ -17,7 +17,7 @@ const StyledContainer = styled.div`
 position: relative;
 background: var(--bg);
 height: auto;
-padding: 40px 0 0 60px;
+padding: 40px 0 60px 60px;
 `
 const PrivateRoute = ({ component: Component, ...rest }) => {
     return (
@@ -64,8 +64,8 @@ function DefaultLayout(props) {
                         </router.Switch>
                     </main>
                 </div>
-                <DefaultFooter />
             </StyledContainer>
+            <DefaultFooter />
         </>
     );
 };

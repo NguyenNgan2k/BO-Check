@@ -15,6 +15,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.disabled {
+  cursor: not-allowed;
+}
 
 .fz-24 {
   font-size: 24px !important;
@@ -234,6 +237,7 @@ td {
 
 #banggia tbody .chose {
   background-color: #a6c1d6;
+  behavior: smooth;
 }
 
 

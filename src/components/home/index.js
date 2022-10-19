@@ -24,8 +24,10 @@ import mbb from 'assets/image/logo/mbb.png';
 import { formatDate, formatDateTime } from "utils";
 import { AiFillClockCircle } from 'react-icons/ai';
 import { CgCalendarDates } from 'react-icons/cg';
+import { BsChevronRight } from 'react-icons/bs'
 import Slide from './layout/slide/Slide';
 import CardTopChange from "./layout/cardTopChange";
+
 
 const StyledContainer = styled.div`
     margin-right: 170px;
@@ -131,13 +133,31 @@ function Home(props) {
                 </div>
 
                 <div style={{ width: '40%' }}>
-                    <div style={{ color: '#EFF5F4', fontSize: '20px', fontWeight: 'bold' }}>
+                    <div style={{ color: '#EFF5F4', fontSize: '20px', fontWeight: 'bold', paddingLeft: '40px' }}>
                         Bảng giá đầy đủ - Thông tin chính xác
                     </div>
+                    <ul>
+                        <li>
+                            Thông tin chính xác và cập nhật
+                            Các thông tin quan trọng và nổi bật về thị trường sẽ được D-Invest liên tục cập nhật, giúp bạn có cái nhìn tổng quan và đưa ra quyết định kịp thời và chính xác.
+                        </li>
+                        <li>
+                            Nhận định chi tiết của các chuyên gia
+                            Các góc nhìn chuyên sâu từ đội ngũ chuyên gia đầu tư của D-Invest sẽ hỗ trợ bạn đưa ra các đánh giá đa chiều, qua đó giúp bạn đầu tư tự tin và chính xác!
+                        </li>
+                        <li>
+                            Linh hoạt sử dụng mọi chức năng
+                            Thực hiện các thao tác nhanh gọn với danh sách chức năng đầy đủ và các nút bấm CTAs đầy tiện lợi.
+                        </li>
+                    </ul>
+                    <button style={{ background: '#FFA23A', marginLeft: '40px' }}>Vào trang thị trường</button>
                 </div>
             </div>
 
-            <Title>Tin tức nổi bật</Title>
+            <div className="d-flex justify-content-between align-items-center">
+                <Title>Tin tức nổi bật</Title>
+                <a>Xem thêm <BsChevronRight /></a>
+            </div>
             <News className="new">
                 <div style={{
                     gridColumn: '1/4',
@@ -243,7 +263,7 @@ function Home(props) {
                     </div>
                 </div>
                 <div>
-                    <img src={img7} />
+                    <img src={img7} className='w-100' />
                 </div>
             </News>
             <Title>Cộng đồng đầu tư quan tâm gì?</Title>

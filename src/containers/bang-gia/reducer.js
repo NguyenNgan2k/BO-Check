@@ -201,7 +201,6 @@ const reducer = function widgetReducer(state = initialSate, action) {
             };
 
         case TOP_CHANGE_BY_ID_REQUEST_SUCCESS:
-            console.log(action, action.resData)
             return {
                 ...state,
                 topChangeById: action.resData,

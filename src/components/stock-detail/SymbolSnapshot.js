@@ -10,6 +10,7 @@ import { Card } from "react-bootstrap";
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import { makeGetAllStock } from "lib/seletor";
 import { useHistory } from "react-router";
+import { useRef } from "react";
 
 const Info = styled.div`
     display:flex;
@@ -25,8 +26,25 @@ function SymbolSnapshot(props) {
     const [showModal, setShowModal] = useState(false);
     const [textSearch, setTextSearch] = useState('');
     const [suggestions, setSuggestions] = useState([]);
-
+    const ref = useRef(null);
     const history = useHistory();
+
+    useEffect(() => {
+        document.addEventListener('click', _handleClickModal);
+        return () => {
+            document.removeEventListener('click', _handleClickModal);
+        };
+    }
+    );
+
+    const _handleClickModal = (event) => {
+        console.log('click')
+        const { target } = event;
+        console.log(ref.current.contains(target))
+        if (!ref.current.contains(target)) {
+            setShowModal(false)
+        }
+    }
 
     useEffect(() => {
         return () => {
@@ -64,77 +82,80 @@ function SymbolSnapshot(props) {
                             {stockDetail.sym}
                         </div>
                         <div className="fz-12 ml-1" style={{ color: '#EFF5F4' }}>( {sym.post_to} )</div>
-                        <BsChevronDown
-                            color='#EFF5F4'
-                            style={{ marginLeft: '100px' }}
-                            onClick={() => setShowModal(!showModal)}
-                        />
-                        {
-                            showModal && (
-                                <Card
-                                >
-                                    <Card.Body>
-                                        <div>
-                                            <input
-                                                placeholder="Mã cổ phiếu"
-                                                type='text'
-                                                value={textSearch}
-                                                onChange={(e) => setTextSearch(e.target.value)}
-                                            />
-                                            <RiSearchLine
-                                                color="#8DA5A1"
-                                                size={20}
-                                                style={{
-                                                    position: 'absolute',
-                                                    top: '48px',
-                                                    left: '50px',
-                                                }}
-                                            />
-                                        </div>
-                                        {
-                                            textSearch &&
-                                            <PerfectScrollbar style={{ maxHeight: '350px' }}>
-                                                <>
-                                                    <div style={{ color: '#EFF5F4', margin: '24px 0', fontWeight: 'bold', fontSize: '14px' }}>Khuyến nghị</div>
-                                                    <ul className="p-0 m-0">
-                                                        {
-                                                            suggestions &&
-                                                            !!suggestions &&
-                                                            suggestions.map((item, index) => {
-                                                                return (
-                                                                    <li key={index} style={{ margin: '0 0  24px 14px', cursor: 'pointer' }} onClick={() => _handleClick(item.stock_code)}>
-                                                                        <div style={{ color: '#EFF5F4', fontWeight: 'bold', fontSize: '14px' }}>{item.stock_code}</div>
-                                                                        <div style={{ color: '#8DA5A1', fontSize: '12px' }}>{item?.name_vn}</div>
-                                                                    </li>
-                                                                );
-                                                            })
-                                                        }
-                                                    </ul>
-                                                </>
-                                            </PerfectScrollbar>
-                                        }
-                                        {
-                                            !textSearch &&
-                                            <PerfectScrollbar style={{ maxHeight: '350px' }}>
-                                                <>
-                                                    <div style={{ color: '#EFF5F4', margin: '24px 0', fontWeight: 'bold', fontSize: '14px' }}>Khuyến nghị</div>
-                                                    <ul className="p-0 m-0">
-                                                        <li style={{ margin: '0 0  24px 14px', cursor: 'pointer' }} onClick={() => _handleClick('STB')}>
-                                                            <div style={{ color: '#EFF5F4', fontWeight: 'bold', fontSize: '14px' }}>STB</div>
-                                                            <div style={{ color: '#8DA5A1', fontSize: '12px' }}>Ngân hàng TMCP Sài Gòn Thương Tín</div>
-                                                        </li>
-                                                        <li style={{ margin: '0 0  24px 14px', cursor: 'pointer' }} onClick={() => _handleClick('ROS')}>
-                                                            <div style={{ color: '#EFF5F4', fontWeight: 'bold', fontSize: '14px' }}>ROS</div>
-                                                            <div style={{ color: '#8DA5A1', fontSize: '12px' }}>CTCP Xây dựng FLC FAROS</div>
-                                                        </li>
-                                                    </ul>
-                                                </>
-                                            </PerfectScrollbar>
-                                        }
-                                    </Card.Body>
-                                </Card>
-                            )
-                        }
+                        <div ref={ref}>
+                            <BsChevronDown
+                                color='#EFF5F4'
+                                style={{ marginLeft: '100px' }}
+                                onClick={() => setShowModal(!showModal)}
+                            />
+                            {
+                                showModal && (
+                                    <Card
+
+                                    >
+                                        <Card.Body>
+                                            <div>
+                                                <input
+                                                    placeholder="Mã cổ phiếu"
+                                                    type='text'
+                                                    value={textSearch}
+                                                    onChange={(e) => setTextSearch(e.target.value)}
+                                                />
+                                                <RiSearchLine
+                                                    color="#8DA5A1"
+                                                    size={20}
+                                                    style={{
+                                                        position: 'absolute',
+                                                        top: '48px',
+                                                        left: '50px',
+                                                    }}
+                                                />
+                                            </div>
+                                            {
+                                                textSearch &&
+                                                <PerfectScrollbar style={{ maxHeight: '350px' }}>
+                                                    <>
+                                                        <div style={{ color: '#EFF5F4', margin: '24px 0', fontWeight: 'bold', fontSize: '14px' }}>Khuyến nghị</div>
+                                                        <ul className="p-0 m-0">
+                                                            {
+                                                                suggestions &&
+                                                                !!suggestions &&
+                                                                suggestions.map((item, index) => {
+                                                                    return (
+                                                                        <li key={index} style={{ margin: '0 0  24px 14px', cursor: 'pointer' }} onClick={() => _handleClick(item.stock_code)}>
+                                                                            <div style={{ color: '#EFF5F4', fontWeight: 'bold', fontSize: '14px' }}>{item.stock_code}</div>
+                                                                            <div style={{ color: '#8DA5A1', fontSize: '12px' }}>{item?.name_vn}</div>
+                                                                        </li>
+                                                                    );
+                                                                })
+                                                            }
+                                                        </ul>
+                                                    </>
+                                                </PerfectScrollbar>
+                                            }
+                                            {
+                                                !textSearch &&
+                                                <PerfectScrollbar style={{ maxHeight: '350px' }}>
+                                                    <>
+                                                        <div style={{ color: '#EFF5F4', margin: '24px 0', fontWeight: 'bold', fontSize: '14px' }}>Khuyến nghị</div>
+                                                        <ul className="p-0 m-0">
+                                                            <li style={{ margin: '0 0  24px 14px', cursor: 'pointer' }} onClick={() => _handleClick('STB')}>
+                                                                <div style={{ color: '#EFF5F4', fontWeight: 'bold', fontSize: '14px' }}>STB</div>
+                                                                <div style={{ color: '#8DA5A1', fontSize: '12px' }}>Ngân hàng TMCP Sài Gòn Thương Tín</div>
+                                                            </li>
+                                                            <li style={{ margin: '0 0  24px 14px', cursor: 'pointer' }} onClick={() => _handleClick('ROS')}>
+                                                                <div style={{ color: '#EFF5F4', fontWeight: 'bold', fontSize: '14px' }}>ROS</div>
+                                                                <div style={{ color: '#8DA5A1', fontSize: '12px' }}>CTCP Xây dựng FLC FAROS</div>
+                                                            </li>
+                                                        </ul>
+                                                    </>
+                                                </PerfectScrollbar>
+                                            }
+                                        </Card.Body>
+                                    </Card>
+                                )
+                            }
+                        </div>
                     </div>
                     <div className="fz-12 font-weight-bold" style={{ color: '#D1E0DE' }}>{sym.name_vn}</div>
                 </div>

@@ -5,7 +5,7 @@ import { connect, useDispatch } from "react-redux";
 import DatagridHeader from "./DatagridHeader";
 import DatagridRowGroup from "./DatagridRowGroup";
 import { setSymbolScroll } from 'containers/client/actions';
-
+import PerfectScrollbar from 'react-perfect-scrollbar';
 
 function TblGroup(props) {
     const dispatch = useDispatch();
@@ -87,19 +87,71 @@ function TblGroup(props) {
 
                         />
                     </thead>
-                    <tbody>
-                        {
-
-                            partSnap && partSnap.map((item, index) => (
-                                <DatagridRowGroup
-                                    record={item}
-                                    index={index}
-                                    key={`${item.sym}-${index}`}
-                                />
-                            ))
-                        }
-                    </tbody>
                 </table>
+                <PerfectScrollbar style={{ height: '670px' }}>
+                    <table className="w-100">
+                        <colgroup>
+                            {/* Mã */}
+                            <col width="4.0%"></col>
+                            {/* cell */}
+                            <col width="3.4%"></col>
+                            {/* tc */}
+                            <col width="3.4%"></col>
+                            {/* f */}
+                            <col width="3.4%"></col>
+                            {/* tong kl */}
+                            <col width="4.2%"></col>
+                            {/* g3 */}
+                            <col width="3.4%"></col>
+                            {/* v3 */}
+                            <col width="3.4%"></col>
+                            {/* g2 */}
+                            <col width="3.4%"></col>
+                            {/* v2 */}
+                            <col width="3.4%"></col>
+                            {/* g1 */}
+                            <col width="3.4%"></col>
+                            {/* g1 */}
+                            <col width="3.4%"></col>
+
+                            <col width="4.0%"></col>
+                            <col width="4.0%"></col>
+                            <col width="4.0%"></col>
+
+                            {/* g1 */}
+                            <col width="3.4%"></col>
+                            {/* v1 */}
+                            <col width="3.4%"></col>
+                            {/* g2 */}
+                            <col width="3.4%"></col>
+                            {/* v2 */}
+                            <col width="3.4%"></col>
+                            {/* g3 */}
+                            <col width="3.4%"></col>
+                            {/* g3 */}
+                            <col width="3.4%"></col>
+
+                            <col width="4.0%"></col>
+                            <col width="4.0%"></col>
+                            <col width="4.0%"></col>
+
+                            <col width="3.4%"></col>
+                            <col width="3.4%"></col>
+                        </colgroup>
+                        <tbody>
+                            {
+
+                                partSnap && partSnap.map((item, index) => (
+                                    <DatagridRowGroup
+                                        record={item}
+                                        index={index}
+                                        key={`${item.sym}-${index}`}
+                                    />
+                                ))
+                            }
+                        </tbody>
+                    </table>
+                </PerfectScrollbar>
             </div>
         </Fragment>
     );

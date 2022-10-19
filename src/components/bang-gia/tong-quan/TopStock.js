@@ -13,7 +13,6 @@ import giam from 'assets/image/icon/giam.png';
 
 function TopStock(props) {
     const { topChangeById } = props;
-    console.log(topChangeById)
     const [isTab, setIsTab] = useState('hnx');
     const [typeChange, setTypeChange] = useState('i')
 

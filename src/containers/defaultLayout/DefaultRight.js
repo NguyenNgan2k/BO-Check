@@ -19,24 +19,7 @@ border-top-left-radius: 20px;
 border-bottom-left-radius: 20px;
 z-index: 1;
 `
-const Icon = styled.div`
-    width: 40px;
-    height: 40px;
-    border-radius: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 0 20px 0;
-    &: first-child {
-      margin-bottom: 120px;
-    }
-    &: nth-child(8) {
-        margin-top: 80px;
-      }
-    &: hover {
-        background: radial-gradient(95.59% 167.1% at 32.8% 50%, #31DB9F 0%, #35D4D6 100%)
-    }
-`
+
 
 function DefaultRight(props) {
     const path = useLocation();
@@ -45,7 +28,8 @@ function DefaultRight(props) {
         <>
             <StyleRight>
                 <ul className="m-0 p-0" id="right">
-                    <li>
+                    <li
+                        className="disabled">
                         <CgSearch color="white" size={25} />
                     </li>
                     <li className={pathname.startsWith('/home') ? "icon-active" : ""}>
@@ -64,35 +48,40 @@ function DefaultRight(props) {
                     </li>
                     <li className={pathname.startsWith('/cash') ? "icon-active" : ""}>
                         <Link
-                            to={'/cash'}
+                            to={'#'}
+                            className="disabled"
                         >
                             <BiDollarCircle color="white" size={25} />
                         </Link>
                     </li>
                     <li >
                         <Link
-                            to={'home'}
+                            to={'#'}
+                            className="disabled"
                         >
                             <RiEarthFill color="white" size={25} />
                         </Link>
                     </li>
                     <li>
                         <Link
-                            to={'home'}
+                            to={'#'}
+                            className="disabled"
                         >
                             <HiOutlineUser color="white" size={25} />
                         </Link>
                     </li>
                     <li>
                         <Link
-                            to={'home/cash'}
+                            to={'#'}
+                            className="disabled"
                         >
                             <CgSoftwareDownload color="white" size={25} />
                         </Link>
                     </li>
                     <li>
                         <Link
-                            to={'home/cash'}
+                            to={'#'}
+                            className="disabled"
                         >
                             <CgArrowsExchangeAltV color="white" size={25} />
                         </Link>
@@ -100,50 +89,13 @@ function DefaultRight(props) {
 
                     <li>
                         <Link
-                            to={'home/cash'}
+                            to={'#'}
+                            className="disabled"
                         >
                             <AiOutlineSetting color="white" size={25} />
                         </Link>
                     </li>
                 </ul>
-                {/* <Icon>
-                    <CgSearch color="white" size={25} />
-                </Icon>
-                <Icon className={pathname.endsWith('home') ? "icon-active" : ""}>
-                    <Link
-                        to={'home/bang-gia'}
-                    >
-                        <RiHomeSmile2Line color="white" size={25} />
-                    </Link>
-                </Icon>
-                <Icon className={pathname.endsWith('bang-gia') ? "icon-active" : ""} >
-                    <Link
-                        to={'home/bang-gia'}
-                    >
-                        <AiOutlineLineChart color="white" size={25} />
-                    </Link>
-                </Icon>
-                <Icon className={pathname.endsWith('cash') ? "icon-active" : ""}>
-                    <Link
-                        to={'home/cash'}
-                    >
-                        <BiDollarCircle color="white" size={25} />
-                    </Link>
-                </Icon>
-                <Icon>
-                    <RiEarthFill color="white" size={25} />
-                </Icon> <Icon>
-                    <HiOutlineUser color="white" size={25} />
-                </Icon>
-                <Icon>
-                    <CgSoftwareDownload color="white" size={25} />
-                </Icon>
-                <Icon>
-                    <CgArrowsExchangeAltV color="white" size={25} />
-                </Icon>
-                <Icon>
-                    <AiOutlineSetting color="white" size={25} />
-                </Icon> */}
             </StyleRight>
         </>
     );

@@ -10,27 +10,37 @@ import { AiOutlineStar } from 'react-icons/ai'
 import { numberFormat } from "utils";
 import ChartLineStock from "./chartLineStock";
 import { unsetRegSymbol } from "containers/socket/actions";
+import { topInterestSuccess } from "containers/home/actions";
 
 function CardTopChange(props) {
     const [tabActive, setTabActive] = useState('ckcs');
     const [socketRegis, setSocketRegis] = useState('');
     const dispatch = useDispatch();
-    const prevTopInterest = usePrevious();
     const ws = useContext(WebSocketContext);
 
     const { topInterest, unsetRegSymbol } = props;
+    const prevTopInterest = usePrevious(topInterest);
     console.log(topInterest)
+    console.log(prevTopInterest)
 
     useEffect(() => {
         if (tabActive === 'ckcs') {
             // load top interest
             dispatch(topInterestRequest());
         }
+        else {
+            dispatch(topInterestSuccess(null))
+        }
+
     }, [tabActive]);
+
+    console.log(!_.isEqual(topInterest, prevTopInterest))
 
     useEffect(() => {
         if (topInterest &&
             !_.isEqual(topInterest, prevTopInterest)) {
+            handleLeaveData(socketRegis);
+            unsetRegSymbol();
             handleRegisterData(_.map(topInterest, 'STOCK_CODE').join(','));
         }
 
@@ -38,7 +48,7 @@ function CardTopChange(props) {
             handleLeaveData(socketRegis);
             unsetRegSymbol();
         }
-    }, [tabActive])
+    }, [topInterest])
 
     const handleRegisterData = (symbol) => {
         const payload = {
