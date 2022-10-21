@@ -4,7 +4,7 @@ import { connect, useDispatch } from "react-redux";
 import { usePrevious } from 'lib/useHook';
 import { topInterestRequest } from 'containers/home/actions';
 import { WebSocketContext } from 'containers/socket/webSocket';
-import { makeGetTopInterest } from "lib/seletor";
+import { makeGetTopInterest, makeGetSocketStatus } from "lib/seletor";
 import * as _ from 'lodash';
 import { AiOutlineStar } from 'react-icons/ai'
 import { numberFormat } from "utils";
@@ -18,10 +18,22 @@ function CardTopChange(props) {
     const dispatch = useDispatch();
     const ws = useContext(WebSocketContext);
 
-    const { topInterest, unsetRegSymbol } = props;
+    const { topInterest, unsetRegSymbol, serverStatus, socketReady } = props;
     const prevTopInterest = usePrevious(topInterest);
-    console.log(topInterest)
-    console.log(prevTopInterest)
+    const prevServerStatus = usePrevious(serverStatus);
+
+    useEffect(() => {
+        if (
+            serverStatus &&
+            serverStatus !== prevServerStatus &&
+            serverStatus === 'on' &&
+            prevServerStatus === 'off' &&
+            socketReady
+        ) {
+            unsetRegSymbol();
+            handleRegisterData(_.map(topInterest, 'STOCK_CODE').join(','));
+        }
+    }, [serverStatus]);
 
     useEffect(() => {
         if (tabActive === 'ckcs') {
@@ -31,10 +43,7 @@ function CardTopChange(props) {
         else {
             dispatch(topInterestSuccess(null))
         }
-
     }, [tabActive]);
-
-    console.log(!_.isEqual(topInterest, prevTopInterest))
 
     useEffect(() => {
         if (topInterest &&
@@ -66,7 +75,6 @@ function CardTopChange(props) {
             action: 'leave',
             data: symbol
         }
-
         console.log('regis data', JSON.stringify(payload))
         return ws.sendMessage(payload)
     }
@@ -153,7 +161,7 @@ function CardTopChange(props) {
                                         <span>{numberFormat(item.PRICE, 2, '0')}</span>
                                     </td>
                                     <td className={'d-flex ' + item.COLOR}>
-                                        <span id={item.STOCK_CODE + 'change'} style={{ marginRight: '100px' }}>
+                                        <span id={item.STOCK_CODE + 'change'} style={{ width: '100px' }}>
                                             {item.PERCENT_CHANGE}%
                                         </span>
                                         <span><ChartLineStock record={item} /></span>
@@ -182,11 +190,15 @@ function CardTopChange(props) {
 
 const makeMapStateToProps = () => {
     const getTopInterest = makeGetTopInterest();
+    const getSocketStatus = makeGetSocketStatus();
 
     const mapStateToProps = (state, props) => {
 
         return {
             topInterest: getTopInterest(state),
+            socketReady: state.socket.socketReady,
+
+            serverStatus: getSocketStatus(state),
         };
     };
     return mapStateToProps;

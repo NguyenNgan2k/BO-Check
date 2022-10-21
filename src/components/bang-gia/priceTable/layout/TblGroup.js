@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Fragment } from "react";
 import { memo } from "react";
 import { connect, useDispatch } from "react-redux";
@@ -10,6 +10,8 @@ import PerfectScrollbar from 'react-perfect-scrollbar';
 function TblGroup(props) {
     const dispatch = useDispatch();
     const { partSnap, symScroll } = props;
+    const [subPartSnap, setSubPartSnap] = useState(partSnap ? partSnap.slice(0, 20) : []);
+
 
     useEffect(() => {
         if (symScroll) {
@@ -29,6 +31,22 @@ function TblGroup(props) {
             rootRoll.classList.remove('chose')
         }, 1500)
     };
+    console.log(partSnap)
+
+    useEffect(() => {
+        if (partSnap) recursive()
+    }, [])
+
+    const recursive = () => {
+        console.log(subPartSnap.length)
+        setTimeout(() => {
+            let hasMap = subPartSnap.length + 1 < partSnap.length;
+            setSubPartSnap(partSnap.slice(0, subPartSnap.length + 1));
+            if (hasMap) recursive()
+        }, 0)
+    }
+
+    console.log(subPartSnap);
 
     return (
         <Fragment>
@@ -88,7 +106,7 @@ function TblGroup(props) {
                         />
                     </thead>
                 </table>
-                <PerfectScrollbar style={{ height: '670px' }}>
+                <PerfectScrollbar style={{ height: '670px', zIndex: '0' }}>
                     <table className="w-100">
                         <colgroup>
                             {/* Mã */}
@@ -141,7 +159,7 @@ function TblGroup(props) {
                         <tbody>
                             {
 
-                                partSnap && partSnap.map((item, index) => (
+                                subPartSnap && subPartSnap.map((item, index) => (
                                     <DatagridRowGroup
                                         record={item}
                                         index={index}
