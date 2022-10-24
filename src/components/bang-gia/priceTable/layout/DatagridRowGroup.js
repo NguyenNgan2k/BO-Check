@@ -5,7 +5,6 @@ import Cell from './Cell';
 import { Link } from 'react-router-dom';
 
 function DatagridRowGroup({ record, index }) {
-
     const [cl, setCl] = useState(null);
     const [clHigh, setClHigh] = useState(null);
     const [clLow, setClLow] = useState(null);
